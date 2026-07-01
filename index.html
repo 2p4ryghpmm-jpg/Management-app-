@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebBiz — Website Business Manager</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+<body>
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">W</div>
+      <div class="brand-text">
+        <strong>WebBiz</strong>
+        <span>Business Manager</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="nav-item active" data-view="dashboard"><span class="ico">▧</span> Dashboard</button>
+      <button class="nav-item" data-view="income"><span class="ico">↑</span> Income</button>
+      <button class="nav-item" data-view="expenses"><span class="ico">↓</span> Expenses</button>
+      <button class="nav-item" data-view="debts"><span class="ico">◷</span> Who Owes Me</button>
+      <button class="nav-item" data-view="clients"><span class="ico">☺</span> Clients</button>
+      <button class="nav-item" data-view="invoices"><span class="ico">▤</span> Invoices</button>
+      <button class="nav-item" data-view="notes"><span class="ico">✎</span> Notes &amp; Reminders</button>
+    </nav>
+    <div class="sidebar-foot">
+      <button id="exportBtn" class="ghost-btn" title="Download a backup of all your data">⤓ Backup data</button>
+      <button id="importBtn" class="ghost-btn" title="Restore data from a backup file">⤒ Restore data</button>
+      <input type="file" id="importFile" accept="application/json" hidden />
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <header class="topbar">
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="topbar-actions" id="topbarActions"></div>
+    </header>
+    <section id="viewRoot" class="view-root"></section>
+  </main>
+
+  <!-- ============ MODAL ============ -->
+  <div id="modalOverlay" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <h2 id="modalTitle">Title</h2>
+        <button id="modalClose" class="icon-btn" aria-label="Close">✕</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
