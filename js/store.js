@@ -12,7 +12,7 @@
     settings: {
       businessName: "My Web Studio",
       businessEmail: "",
-      currency: "$",
+      currency: "R",
       invoicePrefix: "INV",
       nextInvoiceNo: 1,
       taxRate: 0
@@ -33,11 +33,14 @@
       if (!raw) return structuredClone(DEFAULT_DATA);
       const parsed = JSON.parse(raw);
       // merge to be resilient to older/newer shapes
-      return {
+      const merged = {
         ...structuredClone(DEFAULT_DATA),
         ...parsed,
         settings: { ...DEFAULT_DATA.settings, ...(parsed.settings || {}) }
       };
+      // migrate the old "$" default to Rands ("$" was never user-chosen)
+      if (merged.settings.currency === "$") merged.settings.currency = "R";
+      return merged;
     } catch (e) {
       console.error("Failed to load data, starting fresh", e);
       return structuredClone(DEFAULT_DATA);
